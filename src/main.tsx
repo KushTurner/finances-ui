@@ -1,15 +1,15 @@
 import { StrictMode } from 'react';
 
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import {
   createRootRoute,
   createRouter,
   RouterProvider,
 } from '@tanstack/react-router';
+import Home from './pages/Home.tsx';
 
 const rootRoute = createRootRoute({
-  component: () => <App />,
+  component: () => <Home />,
 });
 
 const router = createRouter({ routeTree: rootRoute });
