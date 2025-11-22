@@ -1,15 +1,15 @@
 /// <reference types="vitest/config" />
-import { defineConfig, type UserConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import { defineConfig, type UserConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: [['babel-plugin-react-compiler']],
-      },
+        plugins: [['babel-plugin-react-compiler']]
+      }
     }),
     tailwindcss()
   ],
@@ -19,4 +19,4 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
     globals: true
   }
-} as UserConfig)
+} as UserConfig);
