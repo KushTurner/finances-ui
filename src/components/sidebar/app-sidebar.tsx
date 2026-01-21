@@ -8,6 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
+import { MonthlySpend } from '@/components/monthly-spend/monthly-spend';
 
 const navItems = [
   { title: 'Overview', path: '/', icon: LayoutDashboard },
@@ -44,6 +45,7 @@ export function AppSidebar() {
             );
           })}
         </SidebarMenu>
+        <MonthlySpend amount="$3,420.50" percentageChange={12} />
       </SidebarContent>
     </Sidebar>
   );
