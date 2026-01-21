@@ -4,6 +4,8 @@ This project is a finances tracker that allows me to upload my bank statements a
 
 # Tech Stack
 
+- Vite
+- Pnpm
 - React
 - TypeScript
 - ShadCN
@@ -12,9 +14,10 @@ This project is a finances tracker that allows me to upload my bank statements a
 
 # Running application
 
-- Run `pnpm dev` to start the application.
-- Run `pnpm test` to run the tests.
-- Run `pnpm format` to format the code.
+- Run `pnpm dev` to start the application
+- Run `pnpm build` to build the application
+- Run `pnpm test` to run the tests
+- Run `pnpm format` to format the code
 
 # Architecture
 
@@ -27,12 +30,20 @@ This project is a finances tracker that allows me to upload my bank statements a
 - Ensure type safety
 - Avoid using any type
 - Prefer interface over type
+- Avoid comments
+- Favour ShadCN components over custom components
+- Create a new folder for each component
 
 # Testing
 
 - Components should be tested using unit tests
 - Avoid useless tests
 - Avoid using multiple asserts in a single test
+
+# For AI
+
+- Don't add anything not asked for from prompts without asking
+- Use /design for design reference
 
 # Code reviews
 
