@@ -8,7 +8,13 @@ import {
   type ColumnDef,
   type SortingState
 } from '@tanstack/react-table';
-import { ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpDown,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -68,18 +74,31 @@ function CategoryBadge({ category }: { category: string | null }) {
 
 function SortableHeader({
   children,
-  onClick
+  onClick,
+  sortDirection
 }: {
   children: React.ReactNode;
   onClick: () => void;
+  sortDirection: 'asc' | 'desc' | false;
 }) {
+  const isSorted = sortDirection !== false;
+
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer"
+      className={cn(
+        'flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer',
+        isSorted && 'text-foreground'
+      )}
     >
       {children}
-      <ArrowUpDown className="h-3 w-3" />
+      {sortDirection === 'asc' ? (
+        <ArrowUp className="h-3 w-3" />
+      ) : sortDirection === 'desc' ? (
+        <ArrowDown className="h-3 w-3" />
+      ) : (
+        <ArrowUpDown className="h-3 w-3" />
+      )}
     </button>
   );
 }
@@ -90,6 +109,7 @@ const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => (
       <SortableHeader
         onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        sortDirection={column.getIsSorted()}
       >
         DATE
       </SortableHeader>
@@ -101,6 +121,7 @@ const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => (
       <SortableHeader
         onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        sortDirection={column.getIsSorted()}
       >
         DESCRIPTION
       </SortableHeader>
@@ -114,6 +135,7 @@ const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => (
       <SortableHeader
         onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        sortDirection={column.getIsSorted()}
       >
         ACCOUNT
       </SortableHeader>
@@ -124,6 +146,7 @@ const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => (
       <SortableHeader
         onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        sortDirection={column.getIsSorted()}
       >
         CATEGORY
       </SortableHeader>
@@ -136,6 +159,7 @@ const columns: ColumnDef<Transaction>[] = [
       <div className="text-right">
         <SortableHeader
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          sortDirection={column.getIsSorted()}
         >
           AMOUNT
         </SortableHeader>
