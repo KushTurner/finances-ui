@@ -33,6 +33,7 @@ This project is a finances tracker that allows me to upload my bank statements a
 - Avoid comments
 - Favour ShadCN components over custom components
 - Create a new folder for each component
+- Avoid hard coded positions for CSS
 
 # Testing
 
