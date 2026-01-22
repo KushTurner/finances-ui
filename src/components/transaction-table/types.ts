@@ -1,11 +1,4 @@
-export interface Transaction {
-  id: string;
-  date: Date;
-  description: string;
-  account: string;
-  category: string | null;
-  amount: number;
-}
+import type { Transaction } from '@/api';
 
 export interface TransactionTableProps {
   transactions: Transaction[];

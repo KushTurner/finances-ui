@@ -27,7 +27,8 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import type { Transaction, TransactionTableProps } from './types';
+import type { Transaction } from '@/api';
+import type { TransactionTableProps } from './types';
 
 const fuzzyFilter: FilterFn<Transaction> = (row, columnId, value, addMeta) => {
   const itemRank = rankItem(row.getValue(columnId), value);
@@ -140,13 +141,13 @@ const columns: ColumnDef<Transaction>[] = [
     )
   },
   {
-    accessorKey: 'account',
+    accessorKey: 'bank',
     header: ({ column }) => (
       <SortableHeader
         onClick={() => column.toggleSorting(undefined, true)}
         sortDirection={column.getIsSorted()}
       >
-        ACCOUNT
+        BANK
       </SortableHeader>
     )
   },
