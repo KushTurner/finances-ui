@@ -108,7 +108,7 @@ const columns: ColumnDef<Transaction>[] = [
     accessorKey: 'date',
     header: ({ column }) => (
       <SortableHeader
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(undefined, true)}
         sortDirection={column.getIsSorted()}
       >
         DATE
@@ -120,7 +120,7 @@ const columns: ColumnDef<Transaction>[] = [
     accessorKey: 'description',
     header: ({ column }) => (
       <SortableHeader
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(undefined, true)}
         sortDirection={column.getIsSorted()}
       >
         DESCRIPTION
@@ -134,7 +134,7 @@ const columns: ColumnDef<Transaction>[] = [
     accessorKey: 'account',
     header: ({ column }) => (
       <SortableHeader
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(undefined, true)}
         sortDirection={column.getIsSorted()}
       >
         ACCOUNT
@@ -145,7 +145,7 @@ const columns: ColumnDef<Transaction>[] = [
     accessorKey: 'category',
     header: ({ column }) => (
       <SortableHeader
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(undefined, true)}
         sortDirection={column.getIsSorted()}
       >
         CATEGORY
@@ -158,7 +158,7 @@ const columns: ColumnDef<Transaction>[] = [
     header: ({ column }) => (
       <div className="text-right">
         <SortableHeader
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          onClick={() => column.toggleSorting(undefined, true)}
           sortDirection={column.getIsSorted()}
         >
           AMOUNT
@@ -194,6 +194,7 @@ export function TransactionTable({
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
+    enableMultiSort: false,
     state: {
       sorting
     },
