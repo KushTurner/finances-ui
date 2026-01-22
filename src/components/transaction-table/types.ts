@@ -9,5 +9,7 @@ export interface Transaction {
 
 export interface TransactionTableProps {
   transactions: Transaction[];
+  globalFilter?: string;
+  onGlobalFilterChange?: (value: string) => void;
   pageSize?: number;
 }

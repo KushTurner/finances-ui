@@ -2,12 +2,15 @@ import { useState } from 'react';
 import {
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
   type ColumnDef,
+  type FilterFn,
   type SortingState
 } from '@tanstack/react-table';
+import { rankItem } from '@tanstack/match-sorter-utils';
 import {
   ArrowDown,
   ArrowUp,
@@ -25,6 +28,12 @@ import {
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import type { Transaction, TransactionTableProps } from './types';
+
+const fuzzyFilter: FilterFn<Transaction> = (row, columnId, value, addMeta) => {
+  const itemRank = rankItem(row.getValue(columnId), value);
+  addMeta({ itemRank });
+  return itemRank.passed;
+};
 
 const CATEGORY_COLORS: Record<string, string> = {
   GROCERIES: 'bg-green-500/20 text-green-400',
@@ -183,6 +192,8 @@ const columns: ColumnDef<Transaction>[] = [
 
 export function TransactionTable({
   transactions,
+  globalFilter,
+  onGlobalFilterChange,
   pageSize = 10
 }: TransactionTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -190,13 +201,20 @@ export function TransactionTable({
   const table = useReactTable({
     data: transactions,
     columns,
+    filterFns: {
+      fuzzy: fuzzyFilter
+    },
+    globalFilterFn: fuzzyFilter,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
+    onGlobalFilterChange: onGlobalFilterChange,
     enableMultiSort: false,
     state: {
-      sorting
+      sorting,
+      globalFilter
     },
     initialState: {
       pagination: {
