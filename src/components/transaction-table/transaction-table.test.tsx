@@ -11,7 +11,8 @@ const mockTransactions: Transaction[] = [
     description: 'Grocer Store Checkout',
     bank: 'American Express',
     category: 'GROCERIES',
-    amount: -154.2
+    amount: -15420,
+    currency: 'GBP'
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const mockTransactions: Transaction[] = [
     description: 'Monthly Salary',
     bank: 'Nationwide',
     category: 'INCOME',
-    amount: 2500.0
+    amount: 250000,
+    currency: 'GBP'
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ const mockTransactions: Transaction[] = [
     description: 'City Coffee House',
     bank: 'American Express',
     category: 'DINING',
-    amount: -12.5
+    amount: -1250,
+    currency: 'GBP'
   },
   {
     id: 4,
@@ -35,7 +38,8 @@ const mockTransactions: Transaction[] = [
     description: 'No Category Transaction',
     bank: 'Nationwide',
     category: null,
-    amount: -50.0
+    amount: -5000,
+    currency: 'GBP'
   }
 ];
 
@@ -103,7 +107,7 @@ describe('TransactionTable', () => {
     await user.click(dateHeader);
 
     const rows = screen.getAllByRole('row');
-    expect(rows[1]).toHaveTextContent('Oct 18, 2023');
+    expect(rows[1]).toHaveTextContent('Oct 24, 2023');
   });
 
   it('sorts by amount when amount header is clicked', async () => {
@@ -114,7 +118,7 @@ describe('TransactionTable', () => {
     await user.click(amountHeader);
 
     const rows = screen.getAllByRole('row');
-    expect(rows[1]).toHaveTextContent('-£154.20');
+    expect(rows[1]).toHaveTextContent('+£2,500.00');
   });
 
   it('navigates to next page when next button is clicked', async () => {

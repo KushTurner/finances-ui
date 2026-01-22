@@ -55,11 +55,11 @@ export function formatDate(date: Date): string {
   });
 }
 
-export function formatAmount(amount: number): string {
+export function formatAmount(amount: number, currency: string): string {
   const formatted = new Intl.NumberFormat('en-GB', {
     style: 'currency',
-    currency: 'GBP'
-  }).format(Math.abs(amount));
+    currency
+  }).format(Math.abs(amount) / 100);
 
   return amount >= 0 ? `+${formatted}` : `-${formatted}`;
 }
@@ -177,6 +177,7 @@ const columns: ColumnDef<Transaction>[] = [
     ),
     cell: ({ row }) => {
       const amount = row.getValue('amount') as number;
+      const currency = row.original.currency;
       return (
         <span
           className={cn(
@@ -184,18 +185,36 @@ const columns: ColumnDef<Transaction>[] = [
             amount < 0 ? 'text-red-500' : 'text-green-500'
           )}
         >
-          {formatAmount(amount)}
+          {formatAmount(amount, currency)}
         </span>
       );
     }
   }
 ];
 
+function TableSkeleton() {
+  return (
+    <div
+      className="flex-1 animate-pulse"
+      style={{
+        background: `repeating-linear-gradient(
+          to bottom,
+          hsl(var(--muted)) 0px,
+          hsl(var(--muted)) 48px,
+          transparent 48px,
+          transparent 49px
+        )`
+      }}
+    />
+  );
+}
+
 export function TransactionTable({
   transactions,
   globalFilter,
   onGlobalFilterChange,
-  pageSize = 10
+  pageSize = 10,
+  isLoading = false
 }: TransactionTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -229,6 +248,37 @@ export function TransactionTable({
   const startRow = pageIndex * pageSize + 1;
   const endRow = Math.min((pageIndex + 1) * pageSize, totalRows);
   const pageCount = table.getPageCount();
+
+  if (isLoading) {
+    return (
+      <div className="w-full flex flex-col flex-1">
+        <div className="rounded-md border flex-1 overflow-auto flex flex-col">
+          <Table>
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <TableHead
+                      key={header.id}
+                      className="text-muted-foreground"
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  ))}
+                </TableRow>
+              ))}
+            </TableHeader>
+          </Table>
+          <TableSkeleton />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex flex-col flex-1">
