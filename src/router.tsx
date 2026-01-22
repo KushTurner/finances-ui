@@ -3,8 +3,8 @@ import {
   createRootRoute,
   createRoute
 } from '@tanstack/react-router';
-import { RootLayout } from '@/components/layout/root-layout';
-import { OverviewPage } from '@/pages/overview/overview-page';
+import { RootLayout } from '@/components/layout';
+import { OverviewPage } from '@/pages/overview';
 
 const rootRoute = createRootRoute({
   component: RootLayout

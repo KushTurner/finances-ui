@@ -2,38 +2,38 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import { TransactionTable } from './transaction-table';
-import type { Transaction } from './types';
+import type { Transaction } from '@/api';
 
 const mockTransactions: Transaction[] = [
   {
-    id: '1',
+    id: 1,
     date: new Date('2023-10-24T00:00:00Z'),
     description: 'Grocer Store Checkout',
-    account: 'American Express',
+    bank: 'American Express',
     category: 'GROCERIES',
     amount: -154.2
   },
   {
-    id: '2',
+    id: 2,
     date: new Date('2023-10-22T00:00:00Z'),
     description: 'Monthly Salary',
-    account: 'Nationwide',
+    bank: 'Nationwide',
     category: 'INCOME',
     amount: 2500.0
   },
   {
-    id: '3',
+    id: 3,
     date: new Date('2023-10-20T00:00:00Z'),
     description: 'City Coffee House',
-    account: 'American Express',
+    bank: 'American Express',
     category: 'DINING',
     amount: -12.5
   },
   {
-    id: '4',
+    id: 4,
     date: new Date('2023-10-18T00:00:00Z'),
     description: 'No Category Transaction',
-    account: 'Nationwide',
+    bank: 'Nationwide',
     category: null,
     amount: -50.0
   }

@@ -118,10 +118,12 @@ export function TransactionFilters({
     <div className="flex items-center gap-3 mb-4">
       <Popover open={datePickerOpen} onOpenChange={setDatePickerOpen}>
         <PopoverTrigger asChild>
-          <Button variant="outline" size="lg" className="gap-2">
-            <Calendar className="size-4 text-primary" />
-            <span className="leading-none">{formattedDate}</span>
-            <ChevronDown className="size-4" />
+          <Button variant="outline" size="lg">
+            <div className="flex gap-2">
+              <Calendar className="size-4 text-primary" />
+              <span>{formattedDate}</span>
+              <ChevronDown className="size-4" />
+            </div>
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
@@ -148,10 +150,12 @@ export function TransactionFilters({
       <Button
         onClick={onAddTransaction}
         size="lg"
-        className="gap-2 text-white font-bold"
+        className="text-white font-bold"
       >
-        <Plus className="size-4" />
-        <span className="leading-none">Add Transaction</span>
+        <div className="flex gap-2">
+          <Plus className="size-4" />
+          <span>Add Transaction</span>
+        </div>
       </Button>
     </div>
   );

@@ -8,7 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar';
-import { MonthlySpend } from '@/components/monthly-spend/monthly-spend';
+import { MonthlySpend } from '@/components/monthly-spend';
 
 const navItems = [
   { title: 'Overview', path: '/', icon: LayoutDashboard },
