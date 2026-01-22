@@ -187,8 +187,8 @@ export function TransactionTable({
   const pageCount = table.getPageCount();
 
   return (
-    <div className="w-full">
-      <div className="rounded-md border">
+    <div className="w-full flex flex-col flex-1">
+      <div className="rounded-md border flex-1 overflow-auto">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
