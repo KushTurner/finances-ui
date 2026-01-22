@@ -5,4 +5,5 @@ export interface TransactionTableProps {
   globalFilter?: string;
   onGlobalFilterChange?: (value: string) => void;
   pageSize?: number;
+  isLoading?: boolean;
 }

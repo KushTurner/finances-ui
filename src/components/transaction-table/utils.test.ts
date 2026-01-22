@@ -18,21 +18,21 @@ describe('formatDate', () => {
 
 describe('formatAmount', () => {
   it('formats positive amounts with + prefix', () => {
-    expect(formatAmount(2500)).toBe('+£2,500.00');
-    expect(formatAmount(100)).toBe('+£100.00');
+    expect(formatAmount(250000, 'GBP')).toBe('+£2,500.00');
+    expect(formatAmount(10000, 'GBP')).toBe('+£100.00');
   });
 
   it('formats negative amounts with - prefix', () => {
-    expect(formatAmount(-154.2)).toBe('-£154.20');
-    expect(formatAmount(-12.5)).toBe('-£12.50');
+    expect(formatAmount(-15420, 'GBP')).toBe('-£154.20');
+    expect(formatAmount(-1250, 'GBP')).toBe('-£12.50');
   });
 
   it('formats zero as positive', () => {
-    expect(formatAmount(0)).toBe('+£0.00');
+    expect(formatAmount(0, 'GBP')).toBe('+£0.00');
   });
 
   it('formats decimal amounts correctly', () => {
-    expect(formatAmount(1234.56)).toBe('+£1,234.56');
-    expect(formatAmount(-1234.56)).toBe('-£1,234.56');
+    expect(formatAmount(123456, 'GBP')).toBe('+£1,234.56');
+    expect(formatAmount(-123456, 'GBP')).toBe('-£1,234.56');
   });
 });
