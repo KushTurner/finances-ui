@@ -46,7 +46,7 @@ const SAMPLE_TRANSACTIONS: Transaction[] = [
 
 export function OverviewPage() {
   return (
-    <div className="p-6">
+    <div className="p-6 flex flex-col flex-1">
       <h1 className="text-2xl font-bold mb-6">Overview</h1>
       <TransactionTable transactions={SAMPLE_TRANSACTIONS} />
     </div>
