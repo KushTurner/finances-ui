@@ -38,8 +38,8 @@ export function MonthlySpend({
         <div
           className={cn(
             'flex items-center gap-1 mt-1 text-sm',
-            isPositive && 'text-emerald-500',
-            isNegative && 'text-red-500'
+            isPositive && 'text-income',
+            isNegative && 'text-expense'
           )}
         >
           {isPositive ? (
