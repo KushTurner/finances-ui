@@ -182,7 +182,7 @@ const columns: ColumnDef<Transaction>[] = [
         <span
           className={cn(
             'text-right block font-medium',
-            amount < 0 ? 'text-red-500' : 'text-green-500'
+            amount < 0 ? 'text-expense' : 'text-income'
           )}
         >
           {formatAmount(amount, currency)}
