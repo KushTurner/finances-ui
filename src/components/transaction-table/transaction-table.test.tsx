@@ -57,14 +57,14 @@ describe('TransactionTable', () => {
     render(<TransactionTable transactions={mockTransactions} />);
 
     const positiveAmount = screen.getByText('+£2,500.00');
-    expect(positiveAmount).toHaveClass('text-green-500');
+    expect(positiveAmount).toHaveClass('text-income');
   });
 
   it('displays negative amounts in red', () => {
     render(<TransactionTable transactions={mockTransactions} />);
 
     const negativeAmount = screen.getByText('-£154.20');
-    expect(negativeAmount).toHaveClass('text-red-500');
+    expect(negativeAmount).toHaveClass('text-expense');
   });
 
   it('renders category badges with correct colors', () => {
