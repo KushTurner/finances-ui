@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finances Dashboard - Add Transaction</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3B82F6", 
+                        "background-dark": "#0F1113", 
+                        "surface-dark": "#1A1D21", 
+                        "surface-accent": "#262A2F", 
+                        "success": "#3B82F6",
+                        "danger": "#F87171",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "sans": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            @apply bg-background-dark text-gray-100;
+        }
+        .table-row-hover:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between border-b border-[#2d3139] bg-surface-dark px-10 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined font-bold">account_balance_wallet</span>
+</div>
+<h2 class="text-xl font-black tracking-tight font-display uppercase text-primary">Finances</h2>
+</div>
+<div class="flex items-center">
+<nav class="flex items-center gap-8">
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Overview</a>
+<a class="text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Budgets</a>
+<a class="text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Investments</a>
+</nav>
+</div>
+</header>
+<main class="flex-1 px-10 py-8 max-w-[1200px] mx-auto w-full relative">
+<div class="flex justify-center mb-10 opacity-30 pointer-events-none">
+<div class="inline-flex p-1.5 bg-surface-dark rounded-xl border border-[#374151]">
+<button class="px-6 py-2.5 text-sm font-bold rounded-lg bg-primary text-white">All Accounts</button>
+<button class="px-6 py-2.5 text-sm font-medium rounded-lg text-gray-400">Account 1</button>
+<button class="px-6 py-2.5 text-sm font-medium rounded-lg text-gray-400">Account 2</button>
+</div>
+</div>
+<div class="mb-10 opacity-30 pointer-events-none">
+<div class="bg-surface-dark p-10 rounded-2xl border border-[#374151] flex flex-col md:flex-row items-center gap-10">
+<div class="flex-1 space-y-3">
+<p class="text-gray-400 text-xs font-bold uppercase tracking-[0.2em]">Total Spend This Month</p>
+<h1 class="text-7xl font-extrabold text-white tracking-tight">$3,420.50</h1>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay">
+<div class="bg-surface-dark w-full max-w-4xl rounded-2xl border border-[#374151] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row">
+<div class="flex-1 p-8 border-b md:border-b-0 md:border-r border-[#374151]">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<h3 class="text-lg font-bold text-white">Manual Entry</h3>
+</div>
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Date</label>
+<input class="w-full bg-surface-accent border-[#374151] rounded-xl text-sm text-white focus:border-primary focus:ring-1 focus:ring-primary h-11 px-4" type="date"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Description</label>
+<input class="w-full bg-surface-accent border-[#374151] rounded-xl text-sm text-white focus:border-primary focus:ring-1 focus:ring-primary h-11 px-4" placeholder="e.g. Weekly Groceries" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Account</label>
+<select class="w-full bg-surface-accent border-[#374151] rounded-xl text-sm text-white focus:border-primary focus:ring-1 focus:ring-primary h-11 px-4">
+<option>Main Savings</option>
+<option>Daily Debit</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Category</label>
+<select class="w-full bg-surface-accent border-[#374151] rounded-xl text-sm text-white focus:border-primary focus:ring-1 focus:ring-primary h-11 px-4">
+<option>Groceries</option>
+<option>Rent</option>
+<option>Entertainment</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
+<input class="w-full bg-surface-accent border-[#374151] rounded-xl text-sm text-white focus:border-primary focus:ring-1 focus:ring-primary h-11 pl-8 pr-4" placeholder="0.00" type="number"/>
+</div>
+</div>
+<button class="w-full mt-4 flex items-center justify-center gap-2 rounded-xl bg-primary text-white h-12 font-bold text-sm shadow-lg shadow-primary/20 hover:brightness-110 active:scale-[0.98] transition-all" type="button">
+<span>Save Transaction</span>
+</button>
+</form>
+</div>
+<div class="flex-1 p-8 bg-surface-accent/20">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+<h3 class="text-lg font-bold text-white">Import Statement</h3>
+</div>
+<p class="text-sm text-gray-400 mb-6">Select your bank format to automatically parse and import your recent transactions.</p>
+<div class="space-y-4 mb-8">
+<label class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Bank Format</label>
+<div class="grid grid-cols-1 gap-3">
+<button class="flex items-center justify-between p-4 rounded-xl border-2 border-primary bg-primary/10 group transition-all">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-white flex items-center justify-center overflow-hidden">
+<span class="text-[8px] font-black text-blue-800 leading-none text-center">AMEX</span>
+</div>
+<span class="text-sm font-bold text-white">American Express</span>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</button>
+<button class="flex items-center justify-between p-4 rounded-xl border border-[#374151] bg-surface-dark hover:border-gray-500 transition-all group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-[#E00000] flex items-center justify-center overflow-hidden">
+<span class="text-[6px] font-black text-white leading-none text-center">NATIONWIDE</span>
+</div>
+<span class="text-sm font-bold text-gray-300">Nationwide</span>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-[#374151]"></div>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="border-2 border-dashed border-[#374151] rounded-2xl p-8 flex flex-col items-center justify-center gap-3 hover:border-primary/50 transition-colors cursor-pointer bg-surface-dark/50 group">
+<div class="w-12 h-12 rounded-full bg-surface-accent flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold text-white">Click to upload</p>
+<p class="text-xs text-gray-500 mt-1">CSV, OFX or QIF files (Max 10MB)</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 rounded-xl bg-primary/10 text-primary border border-primary/20 h-12 font-bold text-sm hover:bg-primary/20 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+<span>Process Import</span>
+</button>
+</div>
+</div>
+<button class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
