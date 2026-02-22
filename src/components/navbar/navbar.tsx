@@ -8,12 +8,12 @@ const navItems = [
   { title: 'Investments', path: '/investments' }
 ];
 
-export function AppHeader() {
+export function Navbar() {
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
 
   return (
-    <header className="flex items-center justify-between border-b border-border bg-card px-10 py-4 shrink-0">
+    <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border bg-card px-10 py-4 shrink-0">
       <div className="flex items-center gap-3">
         <div className="size-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
           <Wallet className="size-4" />
