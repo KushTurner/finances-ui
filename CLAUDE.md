@@ -44,6 +44,7 @@ The app always runs in dark mode (`<html class="dark">`).
 - Ensure type safety
 - Avoid using `any`
 - Prefer `interface` over `type`
+- Prefer `const` over `let`
 - Avoid comments
 - Favour ShadCN components over custom components
 - Create a new folder for each component
