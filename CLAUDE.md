@@ -49,6 +49,10 @@ The app always runs in dark mode (`<html class="dark">`).
 - Create a new folder for each component
 - Avoid using relative position
 
+# Security
+
+- Never version control sensitive keys, API keys, or secrets
+
 # Testing
 
 - Test components with unit tests using Vitest + Testing Library (jsdom environment, globals enabled)
