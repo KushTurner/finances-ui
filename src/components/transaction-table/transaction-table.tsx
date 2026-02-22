@@ -282,7 +282,7 @@ export function TransactionTable({
 
   return (
     <div className="w-full flex flex-col flex-1">
-      <div className="rounded-md border flex-1 overflow-auto">
+      <div className="rounded-md border flex-1 overflow-auto bg-card">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

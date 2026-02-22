@@ -39,6 +39,14 @@ Path alias: `@` resolves to `./src` (configured in `vite.config.ts` and `tsconfi
 
 The app always runs in dark mode (`<html class="dark">`).
 
+# Design
+
+UI designs live in `/design_google_stitch/`. Each screen has its own subfolder containing:
+- `screen.png` — reference screenshot of the intended design
+- `code.html` — Stitch-generated Tailwind HTML for color palette, spacing, and layout reference
+
+When making UI changes, consult the relevant screen's assets to match the design intent.
+
 # Code Conventions
 
 - Ensure type safety
@@ -49,6 +57,7 @@ The app always runs in dark mode (`<html class="dark">`).
 - Favour ShadCN components over custom components
 - Create a new folder for each component
 - Avoid using relative position
+- Always use oklch for color values (no hex, no hsl, no rgb)
 
 # Security
 
