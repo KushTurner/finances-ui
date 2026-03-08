@@ -1,14 +1,13 @@
 import { Outlet } from '@tanstack/react-router';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/sidebar';
+import { Navbar } from '@/components/navbar';
 
 export function RootLayout() {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main>
         <Outlet />
-      </SidebarInset>
-    </SidebarProvider>
+      </main>
+    </div>
   );
 }
